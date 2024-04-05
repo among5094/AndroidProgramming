@@ -88,6 +88,15 @@ public class MainActivity extends AppCompatActivity {
                 chrono.stop();
                 chrono.setTextColor(Color.BLUE);
 
+                //사용자가 btnEnd을 클릭했을 때, 선택한 날짜와 시간을 텍스트 뷰에 설정하도록
+                //int year, int month, int dayOfMonth 이기 때문에 전부 int로 선언되어서, 텍스트 뷰에 표시하려면 toString해야됨
+                tvYear.setText(Integer.toString(selectYear));
+                tvMonth.setText(Integer.toString(selectMonth));
+                tvDay.setText(Integer.toString(selectDay));
+
+                tvHour.setText(Integer.toString(tPicker.getCurrentHour()));
+                tvMinute.setText(Integer.toString(tPicker.getCurrentMinute()));
+
             }
         });
 
@@ -100,15 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        // 텍스트 뷰에 표시하기
-        //int year, int month, int dayOfMonth 이기 때문에 전부 int로 선언되어서, 텍스트 뷰에 표시하려면 toString해야됨
-        tvYear.setText(Integer.toString(selectYear));
-        tvMonth.setText(Integer.toString(selectMonth));
-        tvDay.setText(Integer.toString(selectDay));
-
-        tvHour.setText(Integer.toString(tPicker.getCurrentHour()));
-        tvMinute.setText(Integer.toString(tPicker.getCurrentMinute()));
 
 
     }
