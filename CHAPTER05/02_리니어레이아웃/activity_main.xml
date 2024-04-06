@@ -6,29 +6,58 @@
     android:orientation="vertical"
     >
 
-    <android.widget.Button
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:text="버튼1"
-        android:gravity="right|top"
-        android:layout_gravity="center"
-        />
-
-    <android.widget.Button
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:text="버튼2"
-        android:gravity="center|left"
-        android:layout_gravity="left"
-        />
+    <!--1번 레이아웃: 빨간색 레이아웃 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#FF0000"
+        >
 
 
-    <android.widget.Button
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:text="버튼3"
-        android:gravity="right|bottom"
-        android:layout_gravity="right"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFF00"
+                >
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#000000"
+                >
+            </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!--2번 레이아웃: 보라색 레이아웃 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#800080"
+        >
+    </LinearLayout>
+
 
 </LinearLayout>
