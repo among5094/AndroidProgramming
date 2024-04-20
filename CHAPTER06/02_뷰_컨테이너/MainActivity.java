@@ -1,41 +1,34 @@
-package com.example.ex06_15;
+package com.example.ex06_17;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.TabActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ViewFlipper;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends TabActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnPrev, btnNext;
-        final ViewFlipper vFlipper;
+        TabHost tabHost = getTabHost(); //1. 탭호스트 변수 생성
 
-        btnPrev=(Button) findViewById(R.id.btnPrev);
-        btnNext=(Button) findViewById(R.id.btnNext);
-        vFlipper=(ViewFlipper)findViewById(R.id.viewFlipper1);
+        TabSpec tabSpecSong=tabHost.newTabSpec("SONG").setIndicator("음악별"); //2. 탭스펙 생성
+        tabSpecSong.setContent(R.id.tabSong); //3. 탭스펙을 탭에 붙이기
+        tabHost.addTab(tabSpecSong); //4. 탭을 탭호스트에 부착하기
 
-        btnPrev.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                vFlipper.showPrevious();
-            }
+        TabSpec tabSpecArtist = tabHost.newTabSpec("ARTIST").setIndicator("가수별"); //2. 탭스펙 생성
+        tabSpecArtist.setContent(R.id.tabArtist); //3. 탭스펙을 탭에 붙이기
+        tabHost.addTab(tabSpecArtist);
 
-        });
+        TabSpec tabSpecAlbum = tabHost.newTabSpec("ALBUM").setIndicator("앨범별"); //2. 탭스펙 생성
+        tabSpecAlbum.setContent(R.id.tabAlbum); //탭스펙을 탭에 붙이기
+        tabHost.addTab(tabSpecAlbum);
 
-        btnNext.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                vFlipper.showNext();
-            }
-
-        });
-
-
+        tabHost.setCurrentTab(0);
 
     }
 }
