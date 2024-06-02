@@ -1,10 +1,9 @@
-<img width="506" alt="image" src="https://github.com/among5094/Android/assets/106166621/2bb2f6e7-6033-4372-a864-c77350c3e4da"># Android
-24년도 3학년 1학기 안드로이드
+## 24년도 3학년 1학기 안드로이드
 
-## 교재
-<img width="506" alt="image" src="https://github.com/among5094/Android/assets/106166621/6435c82a-1d65-4685-9326-f0646376a15b">  
+### 교재
+<img width="300" hight="406" alt="image" src="https://github.com/among5094/Android/assets/106166621/6435c82a-1d65-4685-9326-f0646376a15b">  
 
-## 목차
+### 목차
 
 CHAPTER 01 안드로이드의 개요와 개발 환경 설치  
 1.1 안드로이드의 개요  
