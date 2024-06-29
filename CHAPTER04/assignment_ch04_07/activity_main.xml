@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        android:background="#000000"
+        android:text="연습문제 4-7"
+        android:drawableLeft="@drawable/chatgpt_android" />
+
+    <CheckBox
+        android:id="@+id/Checkbox_enable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enable 속성"
+        android:textStyle="bold"/>
+
+    <CheckBox
+        android:id="@+id/Checkbox_clickable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clickable 속성"
+        android:textStyle="bold"/>
+
+    <CheckBox
+        android:id="@+id/Checkbox_rotation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="45도 회전"
+        android:textStyle="bold"/>
+
+    <android.widget.Button
+        android:id="@+id/Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_marginTop="100dp"
+        android:textAllCaps="false"/>
+
+</LinearLayout>
+    <!--android:textAllCaps="false" //text의 내용이 전부 대문자로 보여서 추가해줬습니다!-->
