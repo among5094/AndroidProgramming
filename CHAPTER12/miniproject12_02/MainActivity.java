@@ -3,12 +3,14 @@ package com.example.miniproject12_02;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnInsert = (Button) findViewById(R.id.btnInsert);
         btnSelect = (Button) findViewById(R.id.btnSelect);
 
-        // <초기화>를 클릭했을 때 동작하는 리스너 코딩
+        // <초기화>를 클릭했을 때 동작하는 리스너
         myHelper = new myDBHelper(this); //myDBHelper 인스턴스 생성
         btnInit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +43,52 @@ public class MainActivity extends AppCompatActivity {
                 myHelper.onUpgrade(sqlDB,1,2); 
                 //onUpgrade 메서드를 직접 호출하여 데이터베이스의 버전을 업그레이드함.
                 sqlDB.close(); // DB 닫기
+            }
+        });
+
+        // <입력>를 클릭하면 에디트텍스트 값이 입력되는 리스너
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sqlDB = myHelper.getWritableDatabase();
+                sqlDB.execSQL("INSERT INTO groupTBL VALUES ( '"
+                        + edtName.getText().toString() + "', " //이름
+                        + edtNumber.getText().toString() + ");" ); //인원
+                sqlDB.close();
+                Toast.makeText(getApplicationContext(), "입력됨", Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+        // <조회>를 클릭했을 때 테이블에 입력된 내용이 모두 아래쪽으로 출력되는 리스너
+        btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // 데이터베이스 읽기 모드로 열기
+                sqlDB = myHelper.getReadableDatabase();
+                Cursor cursor;
+
+                // groupTBL 테이블에서 모든 데이터를 조회하는 쿼리 실행
+                cursor = sqlDB.rawQuery("SELECT * FROM groupTBL;", null);
+
+                // 결과를 저장할 문자열 초기화 (그룹 이름과 인원)
+                String strNames = "그룹 이름" + "\r\n" + "----" + "\r\n";
+                String strNumbers = "인원" + "\r\n" + "----" + "\r\n";
+
+                // 커서를 사용하여 조회된 각 행을 순회하며 문자열에 데이터 추가
+                while(cursor.moveToNext()){
+                    strNames += cursor.getString(0) + "\r\n";// 첫 번째 열 데이터(그룹 이름)를 strNames에 추가
+                    strNumbers += cursor.getString(1) + "\r\n";// 두 번째 열 데이터(인원)를 strNumbers에 추가
+                }
+
+                // 조회된 결과를 EditText에 설정하여 화면에 출력
+                edtNameResult.setText(strNames);
+                edtNumberResult.setText(strNumbers);
+
+                // 커서와 데이터베이스 닫기
+                cursor.close();
+                sqlDB.close();
+                
             }
         });
 
